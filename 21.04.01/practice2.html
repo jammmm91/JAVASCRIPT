@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>test jammmm</title>
+
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  </head>
+  <body>
+    Hello world2
+  </body>
+  <script>
+  //for문 의 작동원리
+  //   let i = 0;
+  //
+  //   for(console.log("1번");!console.log("2번");alert("안녕")) {
+  //
+  //     console.log("3번");
+  //     console.log("4번");
+  //
+  //   i = i + 1
+  //   if(i > 3) break;
+  // }
+
+
+//%를 이용하는 경우
+//   for(let i = 0; i <= 100; i++){
+//     if(i % 2 === 1)
+//     console.log(i)
+//   }
+//
+// //%를 이용하지 않는 경우
+//   for(let j = 1; j < 100; j = j+2) {
+//     console.log(j)
+//   }
+
+//별찍기(늘어나기)
+
+// for (let i = 0; i < 8; i++) {
+//   result = "*"
+//   for (let j = 0; j < i; j++) {
+//     result = result + "**"
+// }
+//     console.log(result)
+// }
+
+
+//별찍기(늘어나다가줄어들기)
+for (let i = 0; i < 10; i++) {
+  result = "*"
+  if (i < 5) {
+    for (let j = 0; j < i; j++) {
+    result = result + "**"
+}
+    console.log(result)
+}
+  else {
+    for (let j = 8; j > i; j--) {
+    result = result + "**"
+}
+    console.log(result)
+}
+}
+
+//별찍기(줄어들기)
+// for (let i = 0; i < 8; i++) {
+//   result = "*"
+//   for (let j = 7; j > i; j--) {
+//     result = result + "**"
+// }
+//     console.log(result)
+// }
+
+
+
+
+// result = ""
+// for (let i = 0; i < 5; i++) {
+//   for (let j = 5; j > i; j--) {
+//     result = result + "*"
+// }
+//     console.log(result)
+// }
+  </script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>PRACTICE</title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+
+<body>
+  <!-- id : <input type="text" id="loginId" value=""><br>
+password : <input type="password" id="password"><br> -->
+  NO : <input type="text" id="no">
+  <input type="button" value="버튼" id="button1">
+  <br>
+  <span id="resultArea"></span>
+  <script>
+    // document.getElementById("button1").addEventListener("click", function() {
+    //   console.log(document.getElementById("loginId").value, document.getElementById("password").value);
+    // });
+
+    $("#button1").click(function() {
+      $.ajax({
+        Type: "GET",
+        url: `/test1?no=${$("#no").val()}`,
+        data: {
+
+        },
+        success: function(res) {
+          $("#resultArea").append(`${res[0].NO} / ${res[0].studentNo} / ${res[0].NAME}<br>`);
+        }
+      });
+    });
+  
+
+  </script>
+
+</body>
+
+</html>
