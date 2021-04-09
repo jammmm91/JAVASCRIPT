@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>구구단</title>
+
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+
+<body>
+
+    <input type="text" style= "background-color:lightgreen" value="" id="A"><br>
+    <input type="text" style= "background-color:lightgreen" value="" id="B"><br>
+    <span style="color: rgb(255,0,180);">
+    짝수단 : <input type="radio" name="name" value="C">
+    홀수단 : <input type="radio" name="name" value="D"><br>
+    <input type="button" style= "background-color:pink" value=" 계산 " id="btn"><br>
+  </span>
+
+  <!-- span = 결과 출력할 공간을 만들어 주는 태그 -->
+  <span id="resultArea"></span>
+</body>
+
+<script>
+  $("#btn").click(function() {
+    // $("#A").val() = A의 입력값
+    // $("#B").val() = B의 입력값
+    console.log($("#A").val());
+    console.log($("#B").val());
+
+    if ($('input[value="C"]:checked').val()) {
+      //.html = 원래있던 문자 지우고 출력
+      $("#resultArea").html("")
+      for (let i = 1; i <= $("#B").val() / 2; i++) {
+        $("#resultArea").append(($("#A").val()) + " X " + (i * 2) + " = " + ($("#A").val()) * (i * 2) + "<br>")
+      }
+    } else if ($('input[value="D"]:checked').val()) {
+      $("#resultArea").html("")
+      for (let i = 1; i <= $("#B").val(); i = i + 2) {
+        $("#resultArea").append(($("#A").val()) + " X " + i + " = " + ($("#A").val()) * i + "<br>")
+      }
+
+      // append = 화면에 뿌려주는 명령어
+      //   $("#resultArea").append(($("#A").val()) + " X " + i + " = " + ($("#A").val()) * i + "<br>")
+    }
+  });
+</script>
+
+
+</html>

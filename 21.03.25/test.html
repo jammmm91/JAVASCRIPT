@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-  <head>
-    <meta charset="utf-8">
-    <title>newstest</title>
+<head>
+  <meta charset="utf-8">
+  <title>newstest</title>
 
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-  </head>
-  <body>
-    <!-- 뉴스번호 : <input type="text", id="newsNo"><br> -->
-    뉴스제목 : <input type="text", id="newsTitle"><br>
-    뉴스내용 : <br>
-    <textarea placeholder="글을 입력하세요" cols="40" rows="10" id="newsContent"></textarea><br>
-    <input type="button" value="입력" id="button1">
-  </body>
-  <script type="text/javascript">
-    $("#button1").click(function() {
-      console.log(
-        // $("#newsNo").val(),
-        $("#newsTitle").val(), $("#newsContent").val());
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
 
-      $.ajax({
-        type: "POST",
-        url: `/news1`,
-        data: {
-          // no: $("#newsNo").val(),
-          title: $("#newsTitle").val(),
-          content: $("#newsContent").val(),
-        },
-        success: function(res) {
-          //$("#resultArea").append(`${res[0].NO} / ${res[0].studentNo} / ${res[0].NAME}<br>`);
-          console.log(res);
-          if(res=='not ok') {
-            alert("입력실패");
-          }
-          else if(res=='ok') {
-            alert("입력성공");
-          }
+<body>
+  <!-- 뉴스번호 : <input type="text", id="newsNo"><br> -->
+  뉴스제목 : <input type="text" , id="newsTitle"><br>
+  뉴스내용 : <br>
+  <textarea placeholder="글을 입력하세요" cols="40" rows="10" id="newsContent"></textarea><br>
+  <input type="button" value="입력" id="button1">
+</body>
+<script type="text/javascript">
+  $("#button1").click(function() {
+    console.log(
+      // $("#newsNo").val(),
+      $("#newsTitle").val(), $("#newsContent").val());
+
+    $.ajax({
+      type: "POST",
+      url: `/news1`,
+      data: {
+        // no: $("#newsNo").val(),
+        title: $("#newsTitle").val(),
+        content: $("#newsContent").val(),
+      },
+      success: function(res) {
+        //$("#resultArea").append(`${res[0].NO} / ${res[0].studentNo} / ${res[0].NAME}<br>`);
+        console.log(res);
+        if (res == 'not ok') {
+          alert("입력실패");
+        } else if (res == 'ok') {
+          alert("입력성공");
         }
-      });
+      }
     });
+  });
+</script>
 
-  </script>
 </html>

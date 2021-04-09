@@ -4,9 +4,15 @@ let app = express();
 // let mysql = require('mysql');
 let server = http.createServer(app).listen(80);
 
-app.get('/test', function (req, res) {res.sendfile("practice.html");});
-app.get('/test2', function (req, res) {res.sendfile("practice2.html");});
-app.get('/test3', function (req, res) {res.sendfile("practice3.html");});
+app.get('/test', function(req, res) {
+  res.sendfile("practice.html");
+});
+app.get('/test2', function(req, res) {
+  res.sendfile("practice2.html");
+});
+app.get('/test3', function(req, res) {
+  res.sendfile("practice3.html");
+});
 
 //
 // var connection = mysql.createConnection({
