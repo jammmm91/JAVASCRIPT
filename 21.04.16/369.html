@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  369 practice
+</body>
+<script>
+  //1-300까지 숫자 찍으면서 369에 해당하는 숫자에 '짝'을 출력
+  // let arr = new Array(300);
+  // for (let i = 0; i < arr.length; i++) {
+  //   arr[i] = i+1
+  //   if(i%3==2)
+  //   arr[i] = "짝"
+  //   console.log(arr[i])
+  // }
+
+
+  for (let i = 0; i < 500; i++) {
+    let num = "" + (i + 1)
+    let str = ""
+    for (let j = 0; j < num.length; j++) {
+      if (num[j] == 3 || num[j] == 6 || num[j] == 9) {
+        str = str + "★"
+      }
+    }
+    if (str.length > 0) {
+      console.log(str);
+    } else {
+      console.log(num);
+    }
+  }
+</script>
+
+</html>
