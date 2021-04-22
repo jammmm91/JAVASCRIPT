@@ -8,7 +8,7 @@ app.get('/test', function(req, res) {
   res.sendfile("practice.html");
 });
 app.get('/test2', function(req, res) {
-  res.sendfile("practice2.html");
+  res.sendfile("star.html");
 });
 app.get('/test3', function(req, res) {
   res.sendfile("practice3.html");

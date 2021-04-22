@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hello Jam</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  1번<br> 가중치 :
+  0<input type="radio" name="name1">
+  1<input type="radio" name="name1">
+  2<input type="radio" name="name1">
+  3<input type="radio" name="name1">
+  4<input type="radio" name="name1"><br>
+  <input type="text" name="" value="" id="A"><br><br>
+  2번<br> 가중치 :
+  0<input type="radio" name="name2">
+  1<input type="radio" name="name2">
+  2<input type="radio" name="name2">
+  3<input type="radio" name="name2">
+  4<input type="radio" name="name2"><br>
+  <input type="text" name="" value="" id="B"><br><br>
+  3번<br> 가중치 :
+  0<input type="radio" name="name3">
+  1<input type="radio" name="name3">
+  2<input type="radio" name="name3">
+  3<input type="radio" name="name3">
+  4<input type="radio" name="name3"><br>
+  <input type="text" name="" value="" id="C"><br>
+
+  </span><span id="resultArea"></span><br>
+
+  <input type="button" value="계산" id="btn">
+
+</body>
+
+<script>
+  $("#btn").click(function() {
+    let num1 = 0
+    let array = $('input[name="name1"]');
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].checked) {
+        num1 = i
+        break
+      }
+      // $("#resultArea").append(($("#A").val() * i))
+    }
+    let num2 = 0
+    let array1 = $('input[name="name2"]');
+    for (let j = 0; j < array1.length; j++) {
+      if (array1[j].checked) {
+        num2 = j
+        break
+      }
+    }
+    // $("#resultArea").append(($("#B").val() * j))
+    let num3 = 0
+    let array2 = $('input[name="name3"]');
+    for (let k = 0; k < array2.length; k++) {
+      if (array2[k].checked) {
+        num3 = k
+        break
+      }
+    }
+    // $("#resultArea").append(($("#C").val() * k))
+    inputNum1 = ($("#A").val())
+    inputNum2 = ($("#B").val())
+    inputNum3 = ($("#C").val())
+    rusultNum = (num1 * inputNum1) + (num2 * inputNum2) + (num3 * inputNum3)
+
+    //.html() 은 이전문자들 지우고 출력
+    $("#resultArea").html(num1 + "x" + inputNum1 + " + " +
+      num2 + "x" + inputNum2 + " + " +
+      num3 + "x" + inputNum3 + " = " + rusultNum)
+  })
+</script>
+
+</html>

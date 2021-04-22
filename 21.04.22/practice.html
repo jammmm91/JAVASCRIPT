@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hello Jam</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+</body>
+<script>
+  // let arr = [];
+  //
+  // for (let i = 0; i < 10; i++) {
+  //   arr[i] = [];
+  //   for (let j = 0; j < 10; j++) {
+  //     arr[i][j] = `(${i},${j})`;
+  //   }
+  //   console.log(arr[i]);
+  // }
+
+    let arr1 = [];
+    let num = 1;
+    for (let i = 0; i < 5; i++) {
+      arr1[i] = []
+      for (let j = 0; j < 5; j++) {
+        arr1[i][j] = num
+        num++
+    }
+  }
+  console.log(arr1)
+
+    let arr2 = [];
+    let num2 = 1;
+    for (let i = 0; i < 5; i++) {
+      arr2[i] = []
+      for (let j = 0; j < 5; j++) {
+        arr2[i][j] = num2
+        num2 = num2 + 3
+    }
+  }
+  console.log(arr2)
+
+  let arr3 = [];
+
+  for (let i = 0; i < 5; i++) {
+    arr3[i] = []
+    for (let j = 0; j < 5; j++) {
+      arr3[i][j] = i*j
+    }
+  }
+  console.log(arr3)
+
+</script>
+
+</html>
