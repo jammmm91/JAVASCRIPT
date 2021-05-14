@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>스금중간고사</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  </head>
+  <body>
+    <input type="text" name="radioname" id="A"><br>
+    <input type="text" name="radioname" id="B"><br>
+    <input type="button" value="계산" id="btn"><br>
+  </body>
+  <script>
+  $("#btn").click(function() {
+    inputNum1 = parseInt($("#A").val())
+    inputNum2 = parseInt($("#B").val())
+    sum = inputNum1 + inputNum2
+    minus = inputNum1 - inputNum2
+    multi = inputNum1 * inputNum2
+
+    if (inputNum1 > inputNum2) {
+      division = inputNum1 / inputNum2
+    }
+    else if (inputNum1 < inputNum2) {
+      temp = inputNum1
+      inputNum1 = inputNum2
+      inputNum2 = temp
+      division = inputNum1 / inputNum2
+    }
+      // console.log("덧셈: " + ($("#A").val()+$("#B").val()) + " " +
+      //             "뺄셈: " + $("#A").val() + " " +
+      //             "곱셈: " + $("#A").val() * $("#B").val() + " " +
+      //             "나눗셈: " + $("#A").val() / $("#B").val());
+      console.log("덧셈: " + sum + " 뺄셈: " + minus +
+                  " 곱셈: " + multi + " 나눗셈: " + division)
+    })
+  </script>
+</html>

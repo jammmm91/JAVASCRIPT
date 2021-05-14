@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>스금중간고사</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  </head>
+  <body>
+    1<input type="radio" name="radioname1">
+    2<input type="radio" name="radioname1">
+    3<input type="radio" name="radioname1">
+    4<input type="radio" name="radioname1">
+    5<input type="radio" name="radioname1">
+    6<input type="radio" name="radioname1">
+    7<input type="radio" name="radioname1">
+    8<input type="radio" name="radioname1">
+    9<input type="radio" name="radioname1">
+    10<input type="radio" name="radioname1"><br>
+
+    1<input type="radio" name="radioname2">
+    2<input type="radio" name="radioname2">
+    3<input type="radio" name="radioname2">
+    4<input type="radio" name="radioname2">
+    5<input type="radio" name="radioname2">
+    6<input type="radio" name="radioname2">
+    7<input type="radio" name="radioname2">
+    8<input type="radio" name="radioname2">
+    9<input type="radio" name="radioname2">
+    10<input type="radio" name="radioname2"><br>
+
+    1<input type="radio" name="radioname3">
+    2<input type="radio" name="radioname3">
+    3<input type="radio" name="radioname3">
+    4<input type="radio" name="radioname3">
+    5<input type="radio" name="radioname3">
+    6<input type="radio" name="radioname3">
+    7<input type="radio" name="radioname3">
+    8<input type="radio" name="radioname3">
+    9<input type="radio" name="radioname3">
+    10<input type="radio" name="radioname3"><br>
+
+    <input type="button" value="계산" id="btn"><br>
+
+  </body>
+  <script>
+  $("#btn").click(function() {
+    let num1 = 0
+    let array1 = $('input[name="radioname1"]')
+    for (let i = 0; i < array1.length; i++){
+      if (array1[i].checked) {
+        num1 = i + 1
+        break
+      }
+    }
+    let num2 = 0
+    let array2 = $('input[name="radioname2"]')
+    for (let j = 0; j < array2.length; j++){
+      if (array2[j].checked) {
+        num2 = j + 1
+        break
+      }
+    }
+    let num3 = 0
+    let array3 = $('input[name="radioname3"]')
+    for (let k = 0; k < array3.length; k++){
+      if (array3[k].checked) {
+        num3 = k + 1
+        break
+      }
+    }
+    let array = {num1, num2, num3}
+    maxNum = Math.max(num1, num2, num3)
+    minNum = Math.min(num1, num2, num3)
+    console.log(Math.pow([maxNum],[minNum]))
+  })
+
+  </script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>14일의금요일</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  </head>
+  <body>
+    가격 : <input type="text" placeholder="얼마있니?" id="money">
+    <input type="button" value="확인" id="btn"><br>
+    <span id="resultArea"></span>
+  </body>
+  <script type="text/javascript">
+    $("#btn").click(function() {
+      console.log($("#money").val());
+      $.ajax({
+        type: "post",
+        url: `/postPrice`,
+        data: {money : $("#money").val()},
+        success: function(res) {
+
+          //console창으로 결과 띄우는 것
+          console.log(res);
+
+          //alert창으로 결과 띄우는 것
+          alert(res)
+
+          //span태그 있을 때 화면에 뿌리는 것
+          // $("#resultArea").append(res)
+        }
+      });
+    });
+  </script>
+
+</html>

@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 
-//여기서부터
+//----------------------여기서부터----------------------
 let mysql = require('mysql'); //mysql이라는 모듈을 가져옴
 var connection = mysql.createConnection({
   host: 'localhost',
@@ -27,7 +27,7 @@ var connection = mysql.createConnection({
   database: 'test'
 });
 connection.connect();
-//여기까지 한 set
+//--------------------여기까지 한 set--------------------
 
 
 // connection.query(`select * from news`,
