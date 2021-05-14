@@ -27,13 +27,14 @@ app.get('/test1', function(req, res) {
   res.sendfile("practice1.html");
 });
 
+//★★★post = body, get = query★★★
 app.post('/postPrice', function(req, res) {
   connection.query(`select * from item`,
     function(error, results, fields) {
       if (error) console.log(error);
       let arr = results
       let money = Number(req.body.money);
-      console.log(money);
+
       let error1 = "구입 가능한 상품이 없습니다"
       for (var i = 0; i < arr.length; i++) {
         let eachItem = arr[i]
