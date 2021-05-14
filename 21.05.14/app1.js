@@ -4,6 +4,7 @@ let http = require('http');
 let app = express();
 let server = http.createServer(app).listen(80);
 
+//post할 때 필요한 세 줄
 var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({
   extended: false
