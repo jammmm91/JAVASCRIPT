@@ -19,7 +19,7 @@ var connection = mysql.createConnection({
   database: 'test'
 });
 connection.connect();
-//여기까지-------------------------
+//여기까지--------------------------
 
 
 app.get('/test1', function(req, res) {
