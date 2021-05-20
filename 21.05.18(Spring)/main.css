@@ -1,0 +1,36 @@
+.wrap {
+  width: 500px;
+  margin: 0 auto;
+
+  /* 상단의 바깥여백 중 위의부분 */
+  margin-top: 500px;
+
+  /* 안쪽여백 */
+  padding: 10px;
+
+  /* 테두리 */
+  border: 1px solid #ccc;
+}
+
+a {
+  /* inline 속성과 block속성을 둘다 사용 */
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+
+  /* 안쪽여백(위아래 10px 양옆 20px) */
+  /* 네개가 있으면 위 우 아래 좌(0px 0px 0px 0px) */
+  padding: 10px 20px;
+  /* 5px만큼 둥글게 모서리 처리 */
+  border-radius: 5px;
+  margin: 10px 0px;
+  background: #f1f1f1;
+  border: 1px solid #a1a1a1;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover, a:active {
+  background: #999
+}

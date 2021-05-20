@@ -1,4 +1,4 @@
-//서버만들때 무조건 다 끍어라---------------
+//----------서버만들때 무조건 다 끍어라----------
 let express = require('express');
 let http = require('http');
 let app = express();
@@ -20,7 +20,7 @@ var connection = mysql.createConnection({
   database: 'test'
 });
 connection.connect();
-//여기까지--------------------------
+//--------------------여기까지--------------------
 
 
 app.get('/test1', function(req, res) {

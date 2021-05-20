@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hello world</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  아이템 : <input type="text" placeholder="아이템입력" id="item"><br>
+  가격 : <input type="text" placeholder="가격입력" id="price"><br>
+  <input type="button" value="입력" id="btn1">
+  <input type="button" value="돌아가기" id="btn2">
+  <!-- <span id="resultArea"></span> -->
+</body>
+<script type="text/javascript">
+  $("#btn1").click(function() {
+    console.log($("#item").val()),
+      console.log($("#price").val());
+
+    $.ajax({
+      type: "post",
+      url: `/postPrice1`,
+      data: {
+        item: $("#item").val(),
+        price: $("#price").val()
+      },
+      success: function(res) {
+
+        //console창으로 결과 띄우는 것
+        console.log(res);
+        //alert창으로 결과 띄우는 것
+        alert(res)
+      }
+    });
+  });
+
+  $("#btn2").click(function() {
+    location.href = "http://localhost/test";
+
+  });
+</script>
+
+</html>
