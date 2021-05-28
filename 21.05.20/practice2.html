@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hello world</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  <span id="resultArea"></span>
+    <input type="button" value="back" style="width: 200px; cursor: pointer" id="btn2">
+</body>
+<script type="text/javascript">
+
+  function clickToDel(num){
+
+    location.href = "/list";
+
+    $.ajax({
+      type: "delete",
+      url: `/deleteUrl`,
+      data: {
+        no:num
+      },
+      success: function(res) {
+        // location.href = "/list";
+        // window.location.reload();
+      }
+    });
+  }
+
+    $("#btn2").click(function() {
+      location.href = "http://localhost/insertform";
+    });
+
+    $.ajax({
+      type: "post",
+      url: `/postPrice3`,
+      data: {
+      },
+      success: function(res) {
+
+        console.log(res);
+
+        for (var i = 0; i < res.length; i++) {
+          $("#resultArea").append(`${res[i].idx}) ${res[i].itemName} - ${res[i].itemPrice}`
+                                  +`&nbsp&nbsp<input type="button" style="background: black; color: white; "value="delete" id="btn2"
+                                    onclick="clickToDel(${res[i].idx})"><br><br>`)
+       }
+      }
+    });
+
+</script>
+
+</html>

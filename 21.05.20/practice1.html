@@ -8,10 +8,11 @@
 </head>
 
 <body>
-  아이템 : <input type="text" placeholder="아이템입력" id="item"><br>
-  가격 : <input type="text" placeholder="가격입력" id="price"><br>
-  <input type="button" value="입력" id="btn1">
-  <input type="button" value="돌아가기" id="btn2">
+  ITEM  <input type="text" placeholder="enter item" id="item"><br><br>
+  PRICE  <input type="text" placeholder="enter price" id="price"><br><br>
+  <input type="button" value="back" style="cursor: pointer" id="btn2">
+  <input type="button" value="list" style="cursor: pointer" id="btn3">
+  <input type="button" value="input" padding: "50px" style="cursor: pointer; color: white; background-color: rgb(256,57,115); width: 130px" id="btn1">
   <!-- <span id="resultArea"></span> -->
 </body>
 <script type="text/javascript">
@@ -38,7 +39,11 @@
 
   $("#btn2").click(function() {
     location.href = "http://localhost/test";
+    // location.href = "http://localhost/insertform";
+  });
 
+  $("#btn3").click(function() {
+    location.href = "http://localhost/list";
   });
 </script>
 

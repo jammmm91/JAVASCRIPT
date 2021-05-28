@@ -31,6 +31,17 @@ app.get('/insertform', function(req, res) {
   res.sendfile("practice1.html");
 });
 
+app.delete('/deleteUrl', function(req, res) {
+  connection.query(`delete from item where idx = ${req.body.no}`,
+    function(error, results, fields) {
+      
+    });
+});
+
+app.get('/list', function(req, res) {
+  res.sendfile("practice2.html");
+});
+
 //★★★post = body, get = query★★★
 app.post('/postPrice', function(req, res) {
   connection.query(`select * from item order by itemPrice`,
@@ -38,12 +49,6 @@ app.post('/postPrice', function(req, res) {
       if (error) console.log(error);
       let arr = results
       let money = req.body.money;
-      // let arr1 = []
-      // for (let i = 0; i < arr.length; i++) {
-      //   if (arr[i]<req.body.money) {
-      //
-      //   }
-      // }
       let error1 = "0개"
       for (var i = 0; i < arr.length; i++) {
         let eachItem = arr[i]
@@ -60,14 +65,12 @@ app.post('/postPrice1', function(req, res) {
       where itemName = '${req.body.item}'
       or itemPrice = ${req.body.price}`,
     function(error, results, fields) {
-      // res.send(results)
-
       if (results.length == 2) {
         res.send('동일한 이름, 가격이 각각 존재합니다(2개)')
 
       } else if (results.length == 1) {
         // results가 배열의 형태이고 지금 들어오는건 하나의배열이지만
-        // 그래도 인덱스를 설정 해줘야 한다고 한다 
+        // 그래도 인덱스를 설정 해줘야 한다고 한다
         if (`${req.body.price}` == results[0].itemPrice &
           `${req.body.item}` == results[0].itemName) {
           res.send('동일한 이름과 가격을 가진 아이템이 존재합니다')
@@ -89,5 +92,18 @@ app.post('/postPrice1', function(req, res) {
             }
           });
       }
+    });
+});
+
+app.post('/postPrice3', function(req, res) {
+  connection.query(`select * from item`,
+    function(error, results, fields) {
+      if (error) console.log(error);
+      let arr = results
+
+      for (var i = 0; i < arr.length; i++) {
+        let eachItem = arr[i]
+      }
+      res.send(arr);
     });
 });
