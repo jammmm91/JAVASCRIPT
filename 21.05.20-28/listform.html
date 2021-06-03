@@ -9,14 +9,11 @@
 
 <body>
   <span id="resultArea"></span>
-    <input type="button" value="back" style="width: 200px; cursor: pointer" id="btn2">
+    <input type="button" value="back" style="width: 200px; cursor: pointer; background: white; color: black" id="btn2">
 </body>
 <script type="text/javascript">
 
   function clickToDel(num){
-
-    location.href = "/list";
-
     $.ajax({
       type: "delete",
       url: `/deleteUrl`,
@@ -24,10 +21,15 @@
         no:num
       },
       success: function(res) {
-        // location.href = "/list";
+        // 응답을 준다 (새로고침으로) -> /list는 결국 같은 페이지이기 때문에 새로고침과 같다
+        location.href = "/list";
         // window.location.reload();
       }
     });
+  }
+
+  function clickToUp(num){
+    location.href = "http://localhost/updateUrl?"+`${num}`;
   }
 
     $("#btn2").click(function() {
@@ -44,9 +46,12 @@
         console.log(res);
 
         for (var i = 0; i < res.length; i++) {
+          let idxTest = `${res[i].idx}`
           $("#resultArea").append(`${res[i].idx}) ${res[i].itemName} - ${res[i].itemPrice}`
                                   +`&nbsp&nbsp<input type="button" style="background: black; color: white; "value="delete" id="btn2"
-                                    onclick="clickToDel(${res[i].idx})"><br><br>`)
+                                    onclick="clickToDel(${res[i].idx})">
+                                  <input type="button" style="background: black; color: white; "value="update" id="btn3"
+                                    onclick="clickToUp(${res[i].idx})"><br><br>`)
        }
       }
     });

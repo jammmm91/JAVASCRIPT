@@ -22,24 +22,46 @@ var connection = mysql.createConnection({
 connection.connect();
 //--------------------여기까지--------------------
 
-
-app.get('/test', function(req, res) {
-  res.sendfile("practice.html");
+app.get('/main', function(req, res) {
+  res.sendfile("main.html");
 });
 
 app.get('/insertform', function(req, res) {
-  res.sendfile("practice1.html");
+  res.sendfile("insertform.html");
 });
 
 app.delete('/deleteUrl', function(req, res) {
   connection.query(`delete from item where idx = ${req.body.no}`,
     function(error, results, fields) {
-      
+      res.sendfile("listform.html");
+    });
+});
+
+app.get('/updateUrl', function(req, res) {
+  res.sendfile("updateform.html");
+});
+
+app.get('/updatePage', function(req, res) {
+  connection.query(`select * from item where idx = ${req.query.idx}`,
+    function(error, results, fields) {
+      res.send(results)
+    });
+});
+
+app.put('/updateDB', function(req, res) {
+  connection.query(`UPDATE item SET itemName = '${req.body.itemName}', itemPrice = ${req.body.itemPrice} WHERE idx=${req.body.idx}`,
+    function(error, results, fields) {
+      if (error) {
+        console.log(error);
+        res.send('입력오류');
+      } else if (results.affectedRows == 1) {
+        res.send('데이터 수정 완료');
+      }
     });
 });
 
 app.get('/list', function(req, res) {
-  res.sendfile("practice2.html");
+  res.sendfile("listform.html");
 });
 
 //★★★post = body, get = query★★★

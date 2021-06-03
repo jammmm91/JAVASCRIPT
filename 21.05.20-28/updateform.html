@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Hello world</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  </head>
+  <body>
+    ITEM  <input type="text" placeholder="enter item" id="itemName"><br><br>
+    PRICE  <input type="text" placeholder="enter price" id="itemPrice"><br><br>
+    <input type="button" value="back" style="cursor: pointer" id="btn2">
+    <input type="button" value="update" padding: "50px" style="cursor: pointer;
+    color: white; background-color: rgb(256,57,115); width: 160px" id="btn1">
+  </body>
+  <script type="text/javascript">
+
+    let idx = location.href.split('?')[1]
+
+    $.ajax({
+      type: "get",
+      url: `/updatePage`,
+      data: {
+        idx : idx,
+      },
+      success: function(res) {
+        $("#itemName").val(res[0].itemName),
+        $("#itemPrice").val(res[0].itemPrice)
+      }
+    });
+
+$("#btn1").click(function() {
+    $.ajax({
+      type: "put",
+      url: `/updateDB`,
+      data: {
+        idx : idx,
+        itemName: $("#itemName").val(),
+        itemPrice: $("#itemPrice").val()
+      },
+      success: function(res) {
+        alert(res)
+      }
+    });
+  });
+
+  $("#btn2").click(function() {
+    location.href = "http://localhost/list";
+  });
+
+  </script>
+
+</html>
