@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Hello world</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  </head>
+  <body>
+    학생관리 프로그램 <br><br>
+    <select id="select">
+      <option value="senior">전체수석</option>
+      <option value="javascript1">javascript최고득점</option>
+      <option value="python1">python최고득점</option>
+      <option value="java1">java최고득점</option>
+    </select>
+    <input type="button" value="확인" style="cursor: pointer; color: white; background-color: rgb(256,57,115);" id="btn1"><br><br>
+
+    <span id="resultArea"></span><br>
+
+    <input type="button" value="입력페이지" style="cursor: pointer" id="btn2">
+    <input type="button" value="목록페이지" style="cursor: pointer" id="btn3">
+
+  </body>
+  <script type="text/javascript">
+
+    $("#btn1").click(function() {
+      console.log($("#select").val());
+      $.ajax({
+        type: "post",
+        url: `/postRank`,
+        data: {select : $("#select").val()},
+        success: function(res) {
+          console.log(res);
+          $("#resultArea").html(res)
+        }
+      });
+    });
+
+    $("#btn2").click(function() {
+      location.href="http://localhost/insertPage";
+    });
+
+    $("#btn3").click(function() {
+      location.href="http://localhost/listPage";
+    });
+  </script>
+</html>

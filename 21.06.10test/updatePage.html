@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Hello world</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  </head>
+  <body>
+    학번 :  <input type="text" id="studentNo" disabled><br><br>
+    이름 :  <input type="text" id="studentName"><br><br>
+    javascript :  <input type="text" id="javascript"><br><br>
+    python :  <input type="text" id="python"><br><br>
+    java :  <input type="text" id="java"><br><br>
+    <input type="button" value="수정" padding: "50px" style="cursor: pointer;
+    color: white; background-color: rgb(256,57,115);" id="btn1">
+    <input type="button" value="메인페이지" style="cursor: pointer" id="btn2">
+    <input type="button" value="목록페이지" style="cursor: pointer" id="btn3">
+  </body>
+  <script type="text/javascript">
+
+    let idx = location.href.split('?')[1]
+
+    $.ajax({
+      type: "get",
+      url: `/updatePage`,
+      data: {
+        no : idx,
+      },
+      success: function(res) {
+        $("#studentNo").val(res[0].studentNo),
+        $("#studentName").val(res[0].studentName),
+        $("#javascript").val(res[0].javascript),
+        $("#python").val(res[0].python),
+        $("#java").val(res[0].java)
+      }
+    });
+
+$("#btn1").click(function() {
+    $.ajax({
+      type: "put",
+      url: `/updateDB`,
+      data: {
+        no : idx,
+        studentNo: $("#studentNo").val(),
+        studentName: $("#studentName").val(),
+        javascript: $("#javascript").val(),
+        python: $("#python").val(),
+        java: $("#java").val()
+      },
+      success: function(res) {
+        alert(res)
+      }
+    });
+  });
+
+  $("#btn2").click(function() {
+    location.href = "http://localhost/main";
+  });
+
+  $("#btn3").click(function() {
+    location.href = "http://localhost/listPage";
+  });
+
+  </script>
+
+</html>

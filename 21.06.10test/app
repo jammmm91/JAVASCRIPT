@@ -1,0 +1,133 @@
+//----------서버만들때 무조건 다 끍어라----------
+let express = require('express');
+let http = require('http');
+let app = express();
+let server = http.createServer(app).listen(80);
+
+//post할 때 필요한 세 줄
+var bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({
+  extended: false
+}))
+app.use(bodyParser.json());
+
+//mysql이라는 모듈을 가져옴
+let mysql = require('mysql');
+var connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '1234',
+  database: 'test'
+});
+connection.connect();
+//--------------------여기까지--------------------
+
+app.get('/main', function(req, res) {
+  res.sendfile("main.html");
+});
+
+
+// 여기서 로직을 구성해서 main에 res값으로 보내주고 싶었지만
+// 구현하지 못했습니다...
+app.post('/postRank', function(req, res) {
+  // connection.query(`select * from student_table`,
+  //   function(error, results, fields) {
+
+      connection.query(`select * from student_table`,
+        function(error, results, fields) {
+      if (`${req.body.select}` == 'senior') {
+
+          res.send('senior')
+      } else if (`${req.body.select}` == 'javascript1') {
+          res.send('javascript1')
+      } else if (`${req.body.select}` == 'python1') {
+          res.send('python1')
+      } else if (`${req.body.select}` == 'java1') {
+          res.send('java1')
+      }
+
+  res.sendfile("main.html");
+});
+});
+
+app.get('/insertPage', function(req, res) {
+  res.sendfile("insertPage.html");
+});
+
+app.delete('/deleteUrl', function(req, res) {
+  connection.query(`delete from student_table where no = ${req.body.no}`,
+    function(error, results, fields) {
+      let massege = '데이터가 삭제되었습니다'
+      res.send(massege)
+      res.sendfile("listPage.html");
+    });
+});
+
+app.get('/updateUrl', function(req, res) {
+  res.sendfile("updatePage.html");
+});
+
+app.get('/updatePage', function(req, res) {
+  connection.query(`select * from student_table where no = ${req.query.no}`,
+    function(error, results, fields) {
+      res.send(results)
+    });
+});
+
+app.put('/updateDB', function(req, res) {
+  connection.query(`UPDATE student_table SET studentNo = ${req.body.studentNo},
+                                    studentName = '${req.body.studentName}',
+                                    javascript = ${req.body.javascript},
+                                    python = ${req.body.python},
+                                    java = ${req.body.java}
+                                    WHERE no = ${req.body.no}`,
+    function(error, results, fields) {
+      if (error) {
+        console.log(error);
+        res.send('수정과정에서 오류가 발생했습니다');
+      } else if (results.affectedRows == 1) {
+        res.send(`${req.body.studentName}님의 데이터가 수정되었습니다`);
+      }
+    });
+});
+
+app.get('/listPage', function(req, res) {
+  res.sendfile("listpage.html");
+});
+
+app.post('/postInfo', function(req, res) {
+  connection.query(`select * from student_table
+      where studentNo = ${req.body.studentNo}`,
+    function(error, results, fields) {
+      if (results.length == 1) {
+          res.send('이미 등록된 학번입니다')
+        }
+      else if (results.length == 0) {
+        connection.query(`INSERT INTO student_table
+        (studentNo, studentName, javascript, python, java) VALUES
+      ('${req.body.studentNo}', '${req.body.studentName}', '${req.body.javascript}'
+      , '${req.body.python}', '${req.body.java}')`,
+          function(error, result, fields) {
+            if (error) {
+              console.log(error);
+              res.send('데이터 베이스 저장에 실패하였습니다');
+            } else if (result.affectedRows == 1) {
+              res.send('데이터 베이스 저장에 성공하였습니다');
+            }
+          });
+        };
+      });
+    });
+
+app.post('/postStudent', function(req, res) {
+  connection.query(`select * from student_table`,
+    function(error, results, fields) {
+      if (error) console.log(error);
+      let arr = results
+
+      for (var i = 0; i < arr.length; i++) {
+        let eachItem = arr[i]
+      }
+      res.send(arr);
+    });
+});

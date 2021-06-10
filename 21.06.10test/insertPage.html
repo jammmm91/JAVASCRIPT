@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hello world</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  학생입력 <br><br>
+  학번 :  <input type="text" id="studentNo"><br><br>
+  이름 :  <input type="text" id="studentName"><br><br>
+  javascript :  <input type="text" id="javascript"><br><br>
+  python :  <input type="text" id="python"><br><br>
+  java :  <input type="text" id="java"><br><br>
+  <input type="button" value="입력" style="cursor: pointer; color: white; background-color: rgb(256,57,115);" id="btn1">
+  <input type="button" value="목록페이지" style="cursor: pointer" id="btn2">
+  <input type="button" value="메인페이지" style="cursor: pointer" id="btn3">
+
+</body>
+<script type="text/javascript">
+
+  $("#btn1").click(function() {
+    console.log($("#studentNo").val()),
+    console.log($("#studentName").val());
+    console.log($("#javascript").val());
+    console.log($("#python").val());
+    console.log($("#java").val());
+    $.ajax({
+      type: "post",
+      url: `/postInfo`,
+      data: {
+        studentNo: $("#studentNo").val(),
+        studentName: $("#studentName").val(),
+        javascript: $("#javascript").val(),
+        python: $("#python").val(),
+        java: $("#java").val(),
+      },
+      success: function(res) {
+        console.log(res);
+        alert(res)
+        location.href = "/insertPage";
+      }
+    });
+  });
+
+  $("#btn2").click(function() {
+    location.href = "http://localhost/listpage";
+  });
+
+  $("#btn3").click(function() {
+    location.href = "http://localhost/main";
+  });
+
+</script>
+
+</html>

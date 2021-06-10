@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hello world</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  <span id="resultArea"></span>
+    <input type="button" value="메인페이지" style="width: 200px; cursor: pointer; background: white; color: black" id="btn1">
+</body>
+<script type="text/javascript">
+
+  function clickToDel(num){
+    $.ajax({
+      type: "delete",
+      url: `/deleteUrl`,
+      data: {
+        no:num
+      },
+      success: function(res) {
+      alert(res)
+      location.href = "/listpage";
+      }
+    });
+  }
+
+  function clickToUp(num){
+    location.href = "http://localhost/updateUrl?"+`${num}`;
+  }
+
+    $("#btn1").click(function() {
+      location.href = "http://localhost/main";
+    });
+
+    $.ajax({
+      type: "post",
+      url: `/postStudent`,
+      data: {
+      },
+      success: function(res) {
+
+        console.log(res);
+
+        for (var i = 0; i < res.length; i++) {
+          let idxTest = `${res[i].idx}`
+          $("#resultArea").append(`${res[i].no} /
+                                  학번 : ${res[i].studentNo} /
+                                  이름 : ${res[i].studentName} /
+                                  javascript : ${res[i].javascript} /
+                                  python : ${res[i].python} /
+                                  java : ${res[i].java}`
+                                  +`&nbsp&nbsp<input type="button" style="background: black; color: white;" value="수정" id="btn2"
+                                    onclick="clickToUp(${res[i].no})">
+                                  <input type="button" style="background: black; color: white;" value="삭제" id="btn3"
+                                    onclick="clickToDel(${res[i].no})"><br><br>`)
+       }
+      }
+    });
+
+</script>
+
+</html>
